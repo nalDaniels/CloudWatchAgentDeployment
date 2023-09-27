@@ -1,9 +1,9 @@
 <p align="center">
 <img src="https://github.com/kura-labs-org/kuralabs_deployment_1/blob/main/Kuralogo.png">
 </p>
-<h1 align="center">C4_deployment-3<h1> 
+<h1 align="center">C4_deployment-4<h1> 
 
-Demonstrate your ability deploy a fully automated Elastic Beanstalk deployment.
+Demonstrate your ability to deploy an application to an EC2 instance.
 
 - Create a separate GitHub repository for this application 
 
@@ -23,4 +23,4 @@ Demonstrate your ability deploy a fully automated Elastic Beanstalk deployment.
 - Lastly, save your documentation and diagram into your repository. Submit your repository link to the LMS
 
 ## Deployment instructions Link:
--  Link to instructions: https://github.com/kura-labs-org/c4_deployment-3/blob/main/Deployment-instructions.md
+-  Link to instructions: https://github.com/kura-labs-org/c4_deployment-4/blob/main/Deployment-instructions.md
