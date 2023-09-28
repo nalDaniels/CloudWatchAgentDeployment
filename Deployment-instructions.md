@@ -79,6 +79,7 @@ python3 -m gunicorn -w 4 application:app -b 0.0.0.0 --daemon
 }
 }
 }
+}
 ```
 6. How is the server performing?
 7. Can the server handle everything installed on it?
