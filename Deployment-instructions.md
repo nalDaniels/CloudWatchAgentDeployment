@@ -4,9 +4,9 @@
 
 ## Deployment Instructions:
 1. **You MUST clone, branch, make the update to the Jenkinsfile, and merge back into main, before you start your Jenkins build!!!** 
-2.  Create a T.2 micro in your public subnet
+2.  Create a T.2 medium in your public subnet
 3. Create a Security Group with ports: 80, 8080, 8000, and 22
-4. Install Jenkins and install the following on the T.2 micro:
+4. Install Jenkins and install the following on the T.2 medium:
     - "python3.10-venv", "python-pip", "ngnix" 
 5. Install the following plugin: “Pipeline Keep Running Step”
 6. Once you've installed Nginx, edit the configuration file "/etc/nginx/sites-enabled/default" with the information below:
