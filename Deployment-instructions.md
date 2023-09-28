@@ -3,18 +3,84 @@
 </p>
 
 ## Deployment Instructions:
-1. Create your own Jenkins Server and install the following on the server:
-    - Install "python3.10-venv", "python-pip", "unzip"
-2. Create a multibranch pipeline and run the build for the application
-    - You'll see an option called branch sources. Choose GitHub and enter your GitHub link and credentials. 
-4. Follow the install [AWS EB CLI](https://scribehow.com/shared/How_to_install_AWS_EB_CLI__J6eBRB9FQl2fGenfUVemlA) instructions
-5. Then, add this stage to your Jenkins file and rerun your build: `stage ('Deploy') {
+1. Create a T.2 medium for your Jenkins Server and install the following on the server:
+    - "python3.10-venv", "python-pip", "ngnix", 
+3. Once you've installed Nginx, edit the configuration file /etc/nginx/sites-enabled/default with the information below:
+```
+#First change the port from 80 to 5000, see below:
+server {
+listen 5000 default_server;
+listen [::]:5000 default_server;
+
+#Now scroll down to where you see “location” and replace it
+with the text below:
+
+location / {
+proxy_pass http://127.0.0.1:8000;
+proxy_set_header Host $host;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+
+```
+5. Configure either a CLoudwatch agent or Datadog agent on this server
+6. Now update the jenkinsfile with the script below: 
+```
+pipeline {
+agent any
+stages {
+stage ('Build') {
 steps {
-sh '/var/lib/jenkins/.local/bin/eb deploy'
+sh '''#!/bin/bash
+python3 -m venv test3
+source test3/bin/activate
+pip install pip --upgrade
+pip install -r requirements.txt
+export FLASK_APP=application
+flask run &
+'''
 }
 }
-`
-6. **IF** your application redeployed successfully, what did you notice?
-7. Configure a [Webhook](https://scribehow.com/shared/Setting_up_a_GitHub_webhook_for_Jenkins_deployment__OCRQGNvARfWF4clyeFcsGQ)
-8. **BONUS:** Once you've configured your webhook, change the background or some text in the application. **HINT** Look into the HTML or CSS file and ask chatGPT for help
-9. Did the application redeploy? 
+stage ('test') {
+steps {
+sh '''#!/bin/bash
+source test3/bin/activate
+py.test --verbose --junit-xml test-reports/results.xml
+'''
+}
+post{
+always {
+junit 'test-reports/results.xml'
+}
+}
+}
+}
+stage ('Clean') {
+steps {
+sh '''#!/bin/bash
+if [[ $(ps aux | grep -i "gunicorn" | tr -s " " | head -n 1 | cut -d " " -f 2) != 0 ]]
+then
+ps aux | grep -i "gunicorn" | tr -s " " | head -n 1 | cut -d " " -f 2 > pid.txt
+kill $(cat pid.txt)
+exit 0
+fi
+'''
+}
+}
+stage ('Deploy') {
+steps {
+keepRunning {
+sh '''#!/bin/bash
+pip install -r requirements.txt
+pip install gunicorn
+python3 -m gunicorn -w 4 application:app -b 0.0.0.0 --daemon
+'''
+}
+}
+}
+}
+}
+```
+7. How is the server performaing?
+8. Can the server handle everything installed on it?
+9. What happens to the CPU when you run another build?
+10. You may configure an alert or figure out how to configure email notifcation on Jenkins
