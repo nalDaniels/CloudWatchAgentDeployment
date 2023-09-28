@@ -18,7 +18,7 @@ Demonstrate your ability to deploy an application to an EC2 instance.
   - Issues
   - Steps
   - System Diagram
-  - Optimization (How would make this deployment more efficient)
+  - Optimization (How would make this deployment more efficient, if you utilize ChatGPT make sure to explain what your prompt was.)
 
 - Lastly, save your documentation and diagram into your repository. Submit your repository link to the LMS
 
