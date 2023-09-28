@@ -41,10 +41,16 @@ stage ('Deploy') {
 steps {
 keepRunning {
 sh '''#!/bin/bash
-su ubuntu
 pip install -r requirements.txt
+python3 -m pip install ddtrace
+export DD_SERVICE=”url-app”
+export DD_ENV=”Prod”
+export DD_VERSION=”1.0”
+export DD_PROFILING_ENABLE=true
+export DD_LOGS_INJECTION=true
+export DD_URL=http://18.209.157.35:8000
 pip install gunicorn
-python3 -m gunicorn -w 4 application:app -b 0.0.0.0 --daemon
+python3 -m ddtrace-run gunicorn -w 4 application:app -b 0.0.0.0 --daemon
 '''
 }
 }
