@@ -82,7 +82,8 @@ python3 -m gunicorn -w 4 application:app -b 0.0.0.0 --daemon
 }
 }
 ```
-6. How is the server performing?
-7. Can the server handle everything installed on it?
-8. What happens to the CPU when you run another build?
-9. You may configure an alert or figure out how to configure email notifications on Jenkins
+6. Create your multi-branch and run it
+7. How is the server performing?
+8. Can the server handle everything installed on it? if yes, how would a T.2 micro handle in this deployment? 
+9. What happens to the CPU when you run another build?
+10. Configure an alert or figure out how to configure email notifications on Jenkins
