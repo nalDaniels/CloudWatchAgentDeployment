@@ -25,7 +25,7 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
 
 ```
-4. Configure either a CLoudwatch agent or Datadog agent on this server
+4. Configure either a Cloudwatch agent or Datadog agent on this server
 5. Now update the jenkinsfile with the script below: 
 ```
 pipeline {
