@@ -25,7 +25,6 @@ junit 'test-reports/results.xml'
 }
 }
 }
-}
 stage ('Clean') {
 steps {
 sh '''#!/bin/bash
@@ -49,4 +48,4 @@ python3 -m gunicorn -w 4 application:app -b 0.0.0.0 --daemon
 }
 }
 }
-}
+
