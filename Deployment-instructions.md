@@ -4,9 +4,10 @@
 
 ## Deployment Instructions:
 1. Create a T.2 medium in your public subnet
-2. Install Jenkins and install the following on the T.2 medium:
+2. Create a Security Group with ports: 80, 8080, 8000, and 22
+3. Install Jenkins and install the following on the T.2 medium:
     - "python3.10-venv", "python-pip", "ngnix", 
-3. Once you've installed Nginx, edit the configuration file "/etc/nginx/sites-enabled/default" with the information below:
+4. Once you've installed Nginx, edit the configuration file "/etc/nginx/sites-enabled/default" with the information below:
 ```
 #First change the port from 80 to 5000, see below:
 server {
