@@ -11,12 +11,12 @@
 5. Install the following plugin: “Pipeline Keep Running Step”
 6. Once you've installed Nginx, edit the configuration file "/etc/nginx/sites-enabled/default" with the information below:
 ```
-#First change the port from 80 to 5000, see below:
+###First change the port from 80 to 5000, see below:
 server {
 listen 5000 default_server;
 listen [::]:5000 default_server;
 
-#Now scroll down to where you see “location” and replace it
+####Now scroll down to where you see “location” and replace it
 with the text below:
 
 location / {
