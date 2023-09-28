@@ -38,7 +38,6 @@ source test3/bin/activate
 pip install pip --upgrade
 pip install -r requirements.txt
 export FLASK_APP=application
-flask run &
 '''
 }
 }
@@ -52,7 +51,6 @@ py.test --verbose --junit-xml test-reports/results.xml
 post{
 always {
 junit 'test-reports/results.xml'
-}
 }
 }
 }
