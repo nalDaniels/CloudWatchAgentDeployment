@@ -42,6 +42,7 @@ steps {
 keepRunning {
 sh '''#!/bin/bash
 pip install -r requirements.txt
+pip install ddtrace
 export DD_SERVICE=”url-app”
 export DD_ENV=”Prod”
 export DD_VERSION=”1.0”
