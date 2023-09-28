@@ -3,9 +3,10 @@
 </p>
 
 ## Deployment Instructions:
-1. Create a T.2 medium for your Jenkins Server and install the following on the server:
+1. Create a T.2 medium in your public subnet
+2. Install Jenkins and install the following on the T.2 medium:
     - "python3.10-venv", "python-pip", "ngnix", 
-3. Once you've installed Nginx, edit the configuration file /etc/nginx/sites-enabled/default with the information below:
+3. Once you've installed Nginx, edit the configuration file "/etc/nginx/sites-enabled/default" with the information below:
 ```
 #First change the port from 80 to 5000, see below:
 server {
@@ -22,8 +23,8 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
 
 ```
-5. Configure either a CLoudwatch agent or Datadog agent on this server
-6. Now update the jenkinsfile with the script below: 
+4. Configure either a CLoudwatch agent or Datadog agent on this server
+5. Now update the jenkinsfile with the script below: 
 ```
 pipeline {
 agent any
@@ -80,7 +81,7 @@ python3 -m gunicorn -w 4 application:app -b 0.0.0.0 --daemon
 }
 }
 ```
-7. How is the server performaing?
-8. Can the server handle everything installed on it?
-9. What happens to the CPU when you run another build?
-10. You may configure an alert or figure out how to configure email notifcation on Jenkins
+6. How is the server performaing?
+7. Can the server handle everything installed on it?
+8. What happens to the CPU when you run another build?
+9. You may configure an alert or figure out how to configure email notifcation on Jenkins
