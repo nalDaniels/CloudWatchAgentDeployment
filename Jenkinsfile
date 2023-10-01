@@ -54,7 +54,7 @@ pipeline {
     } 
     stage ('Email') {
       steps {
-        emailextrecipients([buildUser()])
+        emailext body: 'Check the build status for deployment 4', subject: 'Deployment 4 Build Status', to: 'nalanidaniels23@gmail.com'
 
       }
     }
