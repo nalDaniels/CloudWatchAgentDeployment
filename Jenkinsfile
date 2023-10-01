@@ -52,6 +52,12 @@ pipeline {
       }
       }
     } 
+    stage ('Email') {
+      steps {
+        emailextrecipients([buildUser()])
+
+      }
+    }
     }
   }
  
