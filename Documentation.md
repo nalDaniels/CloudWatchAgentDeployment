@@ -1,8 +1,10 @@
-# Purpose: To set up a VPC and use a nginx load balancer to route traffic to our application. Jenkins was used to run the CI/CD pipeline as well as send an email notification to alert me that the build completed. CloudWatch was used to monitor the health and resources used by the application. I also learned to change the instance type in cases where you are using more  or less CPU and memory to ensure the virtual machine doesn’t get overwhelmed or underutilized. 
+# Purpose:
+To set up a VPC and use a nginx load balancer to route traffic to our application. Jenkins was used to run the CI/CD pipeline as well as send an email notification to alert me that the build completed. CloudWatch was used to monitor the health and resources used by the application. I also learned to change the instance type in cases where you are using more  or less CPU and memory to ensure the virtual machine doesn’t get overwhelmed or underutilized. 
 
 ## Configure VPC Infrastructure
 
-### Purpose: To create a virtual network so that our infrastructure has access to each other and the internet. Also, set up two availability zones in case one goes down, traffic can be routed to the other zone. 
+### Purpose: 
+To create a virtual network so that our infrastructure has access to each other and the internet. Also, set up two availability zones in case one goes down, traffic can be routed to the other zone. 
 
 <img width="1081" alt="Screen Shot 2023-09-30 at 2 26 20 PM" src="https://github.com/nalDaniels/Deployment4/assets/135375665/45ba1704-cfff-4b06-8efe-be3d3165f0e8">
 
@@ -14,7 +16,8 @@
 
 ## Set Up EC2 Instance
 
-### Purpose: To create a Jenkins server to run our CI/CD pipeline, a a nginx server to route traffic to our application, and a CloudWatch agent to monitor our application. 
+### Purpose: 
+To create a Jenkins server to run our CI/CD pipeline, a a nginx server to route traffic to our application, and a CloudWatch agent to monitor our application. 
 
 ### Steps:
 
@@ -35,7 +38,8 @@ Also, I could explore how to  install the Pipeline Keep Running plugin via the c
 
 ## Create Repository
 
-### Purpose: Create a place to host the application code and files. This is useful to track changes to the branch and push files into Jenkins
+### Purpose: 
+Create a place to host the application code and files. This is useful to track changes to the branch and push files into Jenkins
 
 ### Steps: 
 
@@ -55,7 +59,8 @@ Also, I could explore how to  install the Pipeline Keep Running plugin via the c
 
 ## Configure an alert on CloudWatch
 
-### Purpose: To create alerts when the resources exceed a certain threshold
+### Purpose: 
+To create alerts when the resources exceed a certain threshold
 
 ### Steps:
 1. Create an alarm for when cpu_usage_user maximum goes over 21%
@@ -74,9 +79,11 @@ In the case that, CPU goes over a certain percentage, create another instance wi
 
 ## Create an email notification on jenkins
 
-### Purpose: To send an alert once the build has been completed
+### Purpose: 
+To send an alert once the build has been completed
 
-### Issue: I was unable to locate the post-build actions on the multibranch pipeline, so I had to add the stage/step to the jenkins file.
+### Issue: 
+I was unable to locate the post-build actions on the multibranch pipeline, so I had to add the stage/step to the jenkins file.
 
 ### Steps
 
@@ -91,7 +98,8 @@ In the case that, CPU goes over a certain percentage, create another instance wi
 
 ## Create a Jenkins Pipeline
 
-### Purpose: To automate the CI/CD pipeline 
+### Purpose: 
+To automate the CI/CD pipeline 
 
 ### Steps:
 
@@ -119,7 +127,8 @@ I learned that it ran the gunicorn python module and created 4 agents to manage 
 
 ## Monitor Application
 
-### Purpose: To monitor resources used by our EC2 instance and application and determine if the instance is managing the services well
+### Purpose: 
+To monitor resources used by our EC2 instance and application and determine if the instance is managing the services well
 
 ### Steps:
 
