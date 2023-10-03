@@ -1,7 +1,7 @@
 # Purpose:
 To set up a VPC and use a nginx load balancer to route traffic to our application. Jenkins was used to run the CI/CD pipeline as well as send an email notification to alert me that the build completed. CloudWatch was used to monitor the health and resources used by the application. I also learned to change the instance type in cases where you are using more  or less CPU and memory to ensure the virtual machine doesn’t get overwhelmed or underutilized. 
 
-## Configure VPC Infrastructure
+## 1. Configure VPC Infrastructure
 
 ### Purpose: 
 To create a virtual network so that our infrastructure has access to each other and the internet. Also, set up two availability zones in case one goes down, traffic can be routed to the other zone. 
@@ -14,7 +14,7 @@ To create a virtual network so that our infrastructure has access to each other 
 1. Create the VPC, subnets, availability zones, route tables, and internet gateway using the VPC and more option
 
 
-## Set Up EC2 Instance
+## 2. Set Up EC2 Instance
 
 ### Purpose: 
 To create a Jenkins server to run our CI/CD pipeline, a a nginx server to route traffic to our application, and a CloudWatch agent to monitor our application. 
@@ -36,7 +36,7 @@ To optimize this step, I could create a script to install CloudWatch instead of 
 
 Also, I could explore how to  install the Pipeline Keep Running plugin via the command line. 
 
-## Create Repository
+## 3. Create Repository
 
 ### Purpose: 
 Create a place to host the application code and files. This is useful to track changes to the branch and push files into Jenkins
@@ -57,7 +57,7 @@ Create a place to host the application code and files. This is useful to track c
 6. Git push cloned repository to new repository
 7. Optimized this process by adding a webhook
 
-## Configure a Alert on CloudWatch
+## 4. Configure a Alert on CloudWatch
 
 ### Purpose: 
 To create alerts when the resources exceed a certain threshold
@@ -77,7 +77,7 @@ I chose to monitor memory because I was running multiple services on one instanc
 
 In the case that, CPU goes over a certain percentage, create another instance with higher CPU.
 
-## Create an Email Notification on Jenkins
+## 5. Create an Email Notification on Jenkins
 
 ### Purpose: 
 To send an alert once the build has been completed
@@ -96,7 +96,7 @@ I was unable to locate the post-build actions on the multibranch pipeline, so I 
 <img width="824" alt="Screen Shot 2023-10-02 at 10 57 38 PM" src="https://github.com/nalDaniels/Deployment4/assets/135375665/9fce2223-cd00-4d04-9a3f-80524b497e80">
 
 
-## Create a Jenkins Pipeline
+## 6. Create a Jenkins Pipeline
 
 ### Purpose: 
 To automate the CI/CD pipeline 
@@ -125,7 +125,7 @@ I learned that it ran the gunicorn python module and created 4 agents to manage 
 
 
 
-## Monitor Application
+## 7. Monitor Application
 
 ### Purpose: 
 To monitor resources used by our EC2 instance and application and determine if the instance is managing the services well
