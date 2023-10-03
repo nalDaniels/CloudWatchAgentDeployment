@@ -57,7 +57,7 @@ Create a place to host the application code and files. This is useful to track c
 6. Git push cloned repository to new repository
 7. Optimized this process by adding a webhook
 
-## Configure an alert on CloudWatch
+## Configure a Alert on CloudWatch
 
 ### Purpose: 
 To create alerts when the resources exceed a certain threshold
@@ -77,7 +77,7 @@ I chose to monitor memory because I was running multiple services on one instanc
 
 In the case that, CPU goes over a certain percentage, create another instance with higher CPU.
 
-## Create an email notification on jenkins
+## Create an Email Notification on Jenkins
 
 ### Purpose: 
 To send an alert once the build has been completed
