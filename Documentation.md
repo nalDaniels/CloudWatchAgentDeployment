@@ -146,4 +146,4 @@ The CPU increases when running another build - memory also increased. I assume t
 
 
 # Resources:
-Please find my system design for this deployment here:
+Please find my system design for this deployment here: https://github.com/nalDaniels/Deployment4/blob/main/SystemDesign.md
