@@ -109,7 +109,7 @@ To automate the CI/CD pipeline
 
 ### Console Output and ChatGPT
 
-The ‘build’ stage is creating a virtual environmentJenkins used git to clone the repository and fetch the latest commits. The build stage created a virtual environment using python3, activated that test environment, installed python's package manager and all of the packages in the requirements.txt that are necessary for the application to run.  The test stage activated the test environment, executed tests, and saved the results in test-reports/results.xml
+The build stage created a virtual environment using python3, cloned the repository, activated that test environment, installed python's package manager and all of the packages in the requirements.txt that are necessary for the application to run.  The test stage activated the test environment, executed tests, and saved the results in test-reports/results.xml
 
 I ran the commands in the ‘Clean’ stage and found that the script searched the processes for gunicorn, a HTTP server and if the PID was a number other than 0, meaning the process was active, then it killed the process. Plainly, it kills any running gunicorn processes. However, when I ran the command there was more than one gunicorn process, so this script would only rid of one using the head -n 1 command. Though, maybe killing one process, kills them all. 
 
